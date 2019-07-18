@@ -1,4 +1,4 @@
-package com.blu911.herorestapi.model;
+package com.blu911.herorestapi.hero;
 
 import com.github.javafaker.Faker;
 import com.github.javafaker.Superhero;
