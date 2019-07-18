@@ -1,14 +1,11 @@
-package com.blu911.herorestapi.model;
+package com.blu911.herorestapi.hero;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "heroes")
 public class Hero {
@@ -16,7 +13,8 @@ public class Hero {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @NotEmpty(message = "Field cannot be empty")
+    @Column(name = "name",unique = true)
     private String name;
 
 }
