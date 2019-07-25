@@ -1,0 +1,28 @@
+version: '3'
+services:
+  client:
+    container_name: hero-angular-client
+    image: krys911/hero-client
+    restart: always
+    ports:
+      - "4200:4200"  
+    depends_on:
+      - server
+      
+  server:
+    container_name: hero-spring-api
+    image: krys911/hero-rest
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    
+  database:
+    container_name: hero-db
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+      - "3306:3306"    
