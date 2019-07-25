@@ -21,4 +21,7 @@ public class Hero {
     @Column(name = "name",unique = true)
     private String name;
 
+    public Hero(@NotEmpty(message = "Field cannot be empty") String name) {
+        this.name = name;
+    }
 }

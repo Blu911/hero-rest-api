@@ -82,7 +82,6 @@ class HeroServiceImplTest {
         Hero batman = new Hero(2L, "Batman");
         Hero superman = new Hero(3L, "Superman");
         given(heroRepository.findAll()).willReturn(asList(spiderman, batman, superman));
-
         //when
         List<Hero> heroList = heroService.findAll();
         //then

@@ -55,7 +55,7 @@ public class HeroController {
     @RequestMapping(path = "/heroes", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     public ResponseEntity addHero(@Valid @RequestBody Hero hero) {
         Hero addedHero = heroService.save(hero);
-        return ResponseEntity.ok(addedHero);
+        return ResponseEntity.status(201).body(addedHero);
     }
 
     @RequestMapping(path = "/heroes/{id}", method = RequestMethod.DELETE, produces = "application/json", consumes = "application/json")
