@@ -24,11 +24,10 @@ public class HeroController {
     */
     @PostConstruct
     public void generateFakeHeroes() {
-        HeroGenerator heroGenerator = new HeroGenerator();
         Set<Hero> heroSet = new HashSet<>();
 
         while (heroSet.size() < 10) {
-            heroSet.add(heroGenerator.generateHero());
+            heroSet.add(heroService.generateHero());
         }
         heroService.saveAll(heroSet);
     }

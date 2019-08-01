@@ -15,4 +15,6 @@ public interface HeroService {
     List<Hero> sortHeroesByIdASC(List<Hero> heroes);
 
     void saveAll(Collection<Hero> heroes);
+
+    Hero generateHero();
 }

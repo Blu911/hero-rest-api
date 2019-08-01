@@ -1,5 +1,6 @@
 package com.blu911.herorestapi.hero;
 
+import com.blu911.herorestapi.power.PowerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -14,26 +15,32 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class HeroServiceImpl implements HeroService {
 
-    private final HeroRepository repository;
+    private final HeroRepository heroRepository;
+    private final PowerRepository powerRepository;
+
+    public Hero generateHero(){
+        HeroGenerator heroGenerator = new HeroGenerator(powerRepository);
+        return heroGenerator.generateHero();
+    }
 
     @Override
     public Hero findHeroById(Long id) {
-        return repository.findHeroById(id);
+        return heroRepository.findHeroById(id);
     }
 
     @Override
     public List<Hero> findAll() {
-        return repository.findAll();
+        return heroRepository.findAll();
     }
 
     @Override
     public Hero save(Hero hero) {
-        return repository.save(hero);
+        return heroRepository.save(hero);
     }
 
     @Override
     public void deleteById(Long id) {
-        repository.deleteById(id);
+        heroRepository.deleteById(id);
     }
 
     @Override
@@ -45,6 +52,6 @@ public class HeroServiceImpl implements HeroService {
 
     @Override
     public void saveAll(Collection<Hero> heroes) {
-        repository.saveAll(heroes);
+        heroRepository.saveAll(heroes);
     }
 }

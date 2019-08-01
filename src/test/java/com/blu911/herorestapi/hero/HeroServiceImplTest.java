@@ -2,6 +2,7 @@ package com.blu911.herorestapi.hero;
 
 import com.blu911.herorestapi.HeroRestApiApplication;
 import com.blu911.herorestapi.config.H2JpaTestConfig;
+import com.blu911.herorestapi.power.PowerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,12 +27,14 @@ import static org.mockito.Mockito.when;
 class HeroServiceImplTest {
 
     private HeroRepository heroRepository;
+    private PowerRepository powerRepository;
     private HeroService heroService;
 
     @BeforeEach
     void setUp() {
         heroRepository = Mockito.mock(HeroRepository.class);
-        heroService = new HeroServiceImpl(heroRepository);
+        powerRepository = Mockito.mock(PowerRepository.class);
+        heroService = new HeroServiceImpl(heroRepository,powerRepository);
     }
 
     @Test
